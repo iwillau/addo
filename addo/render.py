@@ -1,0 +1,4 @@
+
+
+class FileRenderer(object):
+    pass
