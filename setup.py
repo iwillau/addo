@@ -13,7 +13,6 @@ requires = [
 setup(
     name='addo',
     version='0.1',
-    packages=[''],
     url='https://github.com/iwillau/addo',
     license='MIT',
     author='Will Wheatley',
@@ -21,6 +20,7 @@ setup(
     description='HTML Renderer of destination metadata',
     long_description=README,
     packages=find_packages(),
+    install_requires=requires,
     zip_safe=False,
     test_suite='addo',
     entry_points="""\

@@ -83,6 +83,37 @@ Unit Tests
 Addo has 100% coverage by unit tests as reported by nose. Tests are contained in the tests directory and can be run
 with nose, or distutils.
 
+For example:
+
+```bash
+$ nosetests --with-coverage --cover-package=addo
+```
+
+Current Output:
+```
+Name                 Stmts   Miss  Cover   Missing
+--------------------------------------------------
+addo                     0      0   100%   
+addo.destination        32      0   100%   
+addo.legacy_parser     101      0   100%   
+addo.render             14      0   100%   
+addo.script             72      0   100%   
+--------------------------------------------------
+TOTAL                  219      0   100%   
+----------------------------------------------------------------------
+Ran 60 tests in 0.109s
+
+OK
+```
+
+Future Enhancements
+-------------------
+
+ - The templating system should be extended to a little more generic, so that other templating systems could be used.
+   (Such as Jinja, Chameleon, etc)
+ - The Mako render should be extended so that it can be configured to use TemplateLookup from a directory, enabling
+   inheritance, and all the other good features of Mako.
+
 
 Why the name?
 -------------

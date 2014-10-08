@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Lonely Planet</title>
+    <link href="all.css" media="screen" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header">
+        <div id="logo"></div>
+        <h1>Lonely Planet: ${destination.title}</h1>
+      </div>
+
+      <div id="wrapper">
+        <div id="sidebar">
+          <div class="block">
+            <h3>Navigation</h3>
+            <div class="content">
+              <div class="inner">
+                  % if destination.number_children() > 0:
+                      <h4>Destinations in ${destination.title}</h4>
+                      <ul class="navigation">
+                          % for child in destination.children():
+                            <li><a href="${child['name']}.html">${child['title']}</a></li>
+                          % endfor
+                      </ul>
+                  % endif
+                  % if destination.number_parents() > 0:
+                      <h4>${destination.title} is located in:</h4>
+                      <ul class="navigation">
+                          % for parent in destination.parents():
+                          <li><a href="${parent['name']}.html">${parent['title']}</a></li>
+                          % endfor
+                      </ul>
+                  % endif
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="main">
+          <div class="block">
+            <div class="secondary-navigation">
+              <ul>
+                  % for content in destination.content:
+                      <li class="${'first' if loop.first else ''}">
+                          <a href="#content-${content}">${content.replace('_', ' ').title()}</a></li>
+                  % endfor
+              </ul>
+              <div class="clear"></div>
+            </div>
+            % for name, content in destination.content.items():
+            <div class="content" id="content-${name}">
+              <div class="inner">
+                  % if isinstance(content, basestring):
+                      ${prettify_paragraphs(content)}
+                  % endif
+              </div>
+            </div>
+            % endfor
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
