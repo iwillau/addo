@@ -47,6 +47,7 @@ Alternately you can configure Addo using an ini file, as may be used by other Pa
 would allow Addo to be embedded into another package (such as a Pyramid app).
 
 ```ini
+[addo]
 addo.destinations = destinations.xml
 addo.taxonomy = taxonomy.xml
 addo.render = my_template.html
@@ -64,6 +65,7 @@ is embedded, but if you are using addo directly, you can use Paster style semant
 file is in:
 
 ```ini
+[addo]
 addo.destinations = %(here)s/destinations.xml
 addo.taxonomy = %(here)s/taxonomy.xml
 addo.render = %(here)s/my_template.html
@@ -76,7 +78,23 @@ When using an ini style configuration you can override specific options by speci
 $ addo myconfig.ini -o some_other_location
 ```
 
-An example configuration and set of source data is contained in the `example` directory.
+Example
+-------
+There is an example set of data in the `example` directory, with an example configuration file. Provided Addo is
+installed correctly in your path, running the example set of files is as easy as:
+
+```bash
+$ cd /where/ever/addo/is/example
+$ addo config.ini
+```
+
+Or if you prefer to specify the command line options:
+
+```bash
+$ cd /where/ever/addo/is/example
+$ addo -d destinations.xml -t taxonomy.xml -o output
+```
+
 
 Unit Tests
 ----------
@@ -86,6 +104,13 @@ with nose, or distutils.
 For example:
 
 ```bash
+$ nosetests 
+```
+
+To get coverage you will need to install the coverage module:
+
+```bash
+$ pip install coverage
 $ nosetests --with-coverage --cover-package=addo
 ```
 

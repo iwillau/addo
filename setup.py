@@ -11,8 +11,8 @@ requires = [
 ]
 
 setup(
-    name='addo',
-    version='0.1',
+    name='Addo',
+    version='0.2',
     url='https://github.com/iwillau/addo',
     license='MIT',
     author='Will Wheatley',
@@ -22,6 +22,7 @@ setup(
     packages=find_packages(),
     install_requires=requires,
     zip_safe=False,
+    package_data={'addo': ['*html']},
     test_suite='addo',
     entry_points="""\
     [console_scripts]
